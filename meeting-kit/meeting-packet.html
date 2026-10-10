@@ -52,9 +52,7 @@ strong { font-weight: 650; }
 .cols3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.2in; }
 
 ul.ticks { list-style: none; }
-ul.ticks li { padding-left: 16pt; position: relative; margin-bottom: 5pt; }
-ul.ticks li::before { content: ""; position: absolute; left: 0; top: 5pt; width: 8pt; height: 8pt; border-radius: 50%;
-  border: 2pt solid var(--moss); }
+ul.ticks li { margin-bottom: 5pt; }
 
 .screens { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.14in; }
 .screen { border: 1px solid var(--rule); border-top: 4pt solid var(--forest); border-radius: 4pt; padding: 8pt 9pt 9pt; }
@@ -75,7 +73,6 @@ ul.ticks li::before { content: ""; position: absolute; left: 0; top: 5pt; width:
 .step { padding: 12pt 10pt; border-left: 1px solid var(--rule); }
 .step:first-child { border-left: 0; padding-left: 0; }
 .step .k { font-family: "Montserrat"; font-weight: 800; text-transform: uppercase; font-size: 11pt; color: var(--forest); margin-bottom: 5pt; }
-.step .k::before { content: attr(data-n); display: block; font-size: 8pt; color: var(--moss); letter-spacing: .18em; margin-bottom: 4pt; }
 .step p { font-size: 9.2pt; }
 
 table { width: 100%; border-collapse: collapse; font-size: 9.6pt; }
@@ -111,6 +108,9 @@ td.rank { font-family: "Montserrat"; font-weight: 800; font-size: 14pt; color: v
 .mini.f .qr { border-color: var(--sage); color: var(--sage); }
 .mini .ask { font-size: 8.5pt; font-weight: 650; color: var(--moss); }
 .mini.f .ask { color: var(--sage); }
+.b { color: #1F6F54; font-size: .8em; } .f .b, .card.forest .b { color: #9FC9B4; }
+.sn { font-family: "Montserrat"; font-weight: 800; font-size: 8pt; letter-spacing: .18em; color: #1F6F54; margin-bottom: 4pt; }
+.conv { font-weight: 650; font-size: 9pt; color: #1F6F54; text-transform: uppercase; letter-spacing: .06em; }
 </style>
 </head>
 <body>
@@ -125,7 +125,7 @@ td.rank { font-family: "Montserrat"; font-weight: 800; font-size: 14pt; color: v
       <line x1="0" y1="100" x2="22" y2="100"/><line x1="178" y1="100" x2="200" y2="100"/>
       <circle cx="132" cy="70" r="5" fill="#9FC9B4" stroke="none"/>
     </g></svg>
-    <img class="logo" src="wordmark-white.png" alt="TenantScout">
+    <img class="logo" src="https://cdn.jsdelivr.net/gh/legacyprolific/tenantscout-social-assets@9e4ee7699cad9c2f6e712426fe47569a73965401/meeting-kit/wordmark-white.png" alt="TenantScout">
     <div class="eyebrow">The HBU engine for commercial listings</div>
     <h1>Know what the building should be.<br>Know who to call.</h1>
     <p class="lede">Upload the OM. TenantScout reads the text and the photos, works out the highest and best use, and hands you the businesses that fit it, the day you sign.</p>
@@ -144,10 +144,10 @@ td.rank { font-family: "Montserrat"; font-weight: 800; font-size: 14pt; color: v
       <div>
         <h2>What you walk away with</h2>
         <ul class="ticks">
-          <li><strong>The top three uses</strong>, each with a fit score, conviction and the reasoning</li>
-          <li><strong>A call sheet per use</strong>: phone, address, website where listed, distance, talking points, DNC scrub</li>
-          <li><strong>An override</strong> when you know better, and the list rebuilds around your call</li>
-          <li><strong>Leads in the CRM</strong> and follow-ups from every call outcome</li>
+          <li><span class="b">● </span><strong>The top three uses</strong>, each with a fit score, conviction and the reasoning</li>
+          <li><span class="b">● </span><strong>A call sheet per use</strong>: phone, address, website where listed, distance, talking points, DNC scrub</li>
+          <li><span class="b">● </span><strong>An override</strong> when you know better, and the list rebuilds around your call</li>
+          <li><span class="b">● </span><strong>Leads in the CRM</strong> and follow-ups from every call outcome</li>
         </ul>
       </div>
       <div class="card forest wins">
@@ -170,7 +170,7 @@ td.rank { font-family: "Montserrat"; font-weight: 800; font-size: 14pt; color: v
       <line x1="0" y1="100" x2="22" y2="100"/><line x1="178" y1="100" x2="200" y2="100"/>
       <circle cx="132" cy="70" r="5" fill="#9FC9B4" stroke="none"/>
     </g></svg>
-    <img class="logo" src="wordmark-white.png" alt="TenantScout">
+    <img class="logo" src="https://cdn.jsdelivr.net/gh/legacyprolific/tenantscout-social-assets@9e4ee7699cad9c2f6e712426fe47569a73965401/meeting-kit/wordmark-white.png" alt="TenantScout">
     <div class="eyebrow">Executive brief</div>
     <h1>The same HBU discipline on every listing the firm signs.</h1>
   </div>
@@ -208,27 +208,27 @@ td.rank { font-family: "Montserrat"; font-weight: 800; font-size: 14pt; color: v
       <line x1="0" y1="100" x2="22" y2="100"/><line x1="178" y1="100" x2="200" y2="100"/>
       <circle cx="132" cy="70" r="5" fill="#9FC9B4" stroke="none"/>
     </g></svg>
-    <img class="logo" src="wordmark-white.png" alt="TenantScout">
+    <img class="logo" src="https://cdn.jsdelivr.net/gh/legacyprolific/tenantscout-social-assets@9e4ee7699cad9c2f6e712426fe47569a73965401/meeting-kit/wordmark-white.png" alt="TenantScout">
     <div class="eyebrow">How it works</div>
     <h1>From the OM to the first call.</h1>
   </div>
   <div class="body">
     <div class="flow">
-      <div class="step"><div class="k" data-n="01">Upload</div><p>The OM or flyer. Text, photos, floor and site plans are all read.</p></div>
-      <div class="step"><div class="k" data-n="02">Screen</div><p>Every use tested for zoning, physical fit, conversion cost and demand.</p></div>
-      <div class="step"><div class="k" data-n="03">Rank</div><p>Top three uses with fit score, conviction and reasoning. Override any of them.</p></div>
-      <div class="step"><div class="k" data-n="04">Call</div><p>The businesses that fit each use, with a reason to call each one.</p></div>
-      <div class="step"><div class="k" data-n="05">Follow up</div><p>Leads seed the CRM, tasks come from call outcomes, renewal radar watches the tenants you place.</p></div>
+      <div class="step"><div class="sn">01</div><div class="k">Upload</div><p>The OM or flyer. Text, photos, floor and site plans are all read.</p></div>
+      <div class="step"><div class="sn">02</div><div class="k">Screen</div><p>Every use tested for zoning, physical fit, conversion cost and demand.</p></div>
+      <div class="step"><div class="sn">03</div><div class="k">Rank</div><p>Top three uses with fit score, conviction and reasoning. Override any of them.</p></div>
+      <div class="step"><div class="sn">04</div><div class="k">Call</div><p>The businesses that fit each use, with a reason to call each one.</p></div>
+      <div class="step"><div class="sn">05</div><div class="k">Follow up</div><p>Leads seed the CRM, tasks come from call outcomes, renewal radar watches the tenants you place.</p></div>
     </div>
     <div class="cols">
       <div class="card">
         <h2>The engine, in plain words</h2>
         <ul class="ticks">
-          <li>A use the zoning prohibits never makes the list, so it never reaches a phone call.</li>
-          <li>Hard physical requirements knock a use out before it's scored.</li>
-          <li>Ready-to-occupy uses rank ahead of ones that need a big build-out.</li>
-          <li>Size fit and submarket demand decide the order.</li>
-          <li>Investment listings branch to buyer matching instead.</li>
+          <li><span class="b">● </span>A use the zoning prohibits never makes the list, so it never reaches a phone call.</li>
+          <li><span class="b">● </span>Hard physical requirements knock a use out before it's scored.</li>
+          <li><span class="b">● </span>Ready-to-occupy uses rank ahead of ones that need a big build-out.</li>
+          <li><span class="b">● </span>Size fit and submarket demand decide the order.</li>
+          <li><span class="b">● </span>Investment listings branch to buyer matching instead.</li>
         </ul>
       </div>
       <div class="card forest">
@@ -250,7 +250,7 @@ td.rank { font-family: "Montserrat"; font-weight: 800; font-size: 14pt; color: v
       <line x1="0" y1="100" x2="22" y2="100"/><line x1="178" y1="100" x2="200" y2="100"/>
       <circle cx="132" cy="70" r="5" fill="#9FC9B4" stroke="none"/>
     </g></svg>
-    <img class="logo" src="wordmark-white.png" alt="TenantScout">
+    <img class="logo" src="https://cdn.jsdelivr.net/gh/legacyprolific/tenantscout-social-assets@9e4ee7699cad9c2f6e712426fe47569a73965401/meeting-kit/wordmark-white.png" alt="TenantScout">
     <div class="eyebrow">Illustrative run</div>
     <h1>One listing, start to finish.</h1>
   </div>
@@ -261,9 +261,9 @@ td.rank { font-family: "Montserrat"; font-weight: 800; font-size: 14pt; color: v
       <h2>Ranked uses</h2>
       <table>
         <tr><th>#</th><th>Use</th><th>Why it ranks</th><th>Conversion</th></tr>
-        <tr><td class="rank">1</td><td><strong>Contractor / equipment yard</strong></td><td>Secured yard, industrial zoning</td><td><span class="pill go">Plug-and-play</span></td></tr>
-        <tr><td class="rank">2</td><td><strong>Auto / fleet repair &amp; service</strong></td><td>Grade doors; permitted in the district</td><td><span class="pill go">Plug-and-play</span></td></tr>
-        <tr><td class="rank">3</td><td><strong>Light manufacturing</strong></td><td>Zoning and power support it</td><td><span class="pill va">Value-add</span></td></tr>
+        <tr><td class="rank">1</td><td><strong>Contractor / equipment yard</strong></td><td>Secured yard, industrial zoning</td><td><span class="conv">Plug-and-play</span></td></tr>
+        <tr><td class="rank">2</td><td><strong>Auto / fleet repair &amp; service</strong></td><td>Grade doors; permitted in the district</td><td><span class="conv">Plug-and-play</span></td></tr>
+        <tr><td class="rank">3</td><td><strong>Light manufacturing</strong></td><td>Zoning and power support it</td><td><span class="conv">Value-add</span></td></tr>
       </table>
     </div>
     <div>
@@ -289,7 +289,7 @@ td.rank { font-family: "Montserrat"; font-weight: 800; font-size: 14pt; color: v
       <line x1="0" y1="100" x2="22" y2="100"/><line x1="178" y1="100" x2="200" y2="100"/>
       <circle cx="132" cy="70" r="5" fill="#9FC9B4" stroke="none"/>
     </g></svg>
-    <img class="logo" src="wordmark-white.png" alt="TenantScout">
+    <img class="logo" src="https://cdn.jsdelivr.net/gh/legacyprolific/tenantscout-social-assets@9e4ee7699cad9c2f6e712426fe47569a73965401/meeting-kit/wordmark-white.png" alt="TenantScout">
     <div class="eyebrow">Firm pilot</div>
     <h1>Prove it on real listings.</h1>
     <p class="lede">No platform decision from a deck. A few brokers, a few listings, and a review together.</p>
@@ -299,19 +299,19 @@ td.rank { font-family: "Montserrat"; font-weight: 800; font-size: 14pt; color: v
       <div class="card">
         <h2>The shape</h2>
         <ul class="ticks">
-          <li>A focused group of leasing brokers</li>
-          <li>Real listings, current and newly signed</li>
-          <li>Onboarding and a direct line to the founder</li>
-          <li>A set review date</li>
+          <li><span class="b">● </span>A focused group of leasing brokers</li>
+          <li><span class="b">● </span>Real listings, current and newly signed</li>
+          <li><span class="b">● </span>Onboarding and a direct line to the founder</li>
+          <li><span class="b">● </span>A set review date</li>
         </ul>
       </div>
       <div class="card">
         <h2>What we look at together</h2>
         <ul class="ticks">
-          <li>Did the ranked uses hold up against the brokers' own read?</li>
-          <li>Did it change the listing pitch?</li>
-          <li>How fast did the first real conversations start?</li>
-          <li>Did brokers keep using it without being asked?</li>
+          <li><span class="b">● </span>Did the ranked uses hold up against the brokers' own read?</li>
+          <li><span class="b">● </span>Did it change the listing pitch?</li>
+          <li><span class="b">● </span>How fast did the first real conversations start?</li>
+          <li><span class="b">● </span>Did brokers keep using it without being asked?</li>
         </ul>
       </div>
     </div>
@@ -330,7 +330,7 @@ td.rank { font-family: "Montserrat"; font-weight: 800; font-size: 14pt; color: v
       <line x1="0" y1="100" x2="22" y2="100"/><line x1="178" y1="100" x2="200" y2="100"/>
       <circle cx="132" cy="70" r="5" fill="#9FC9B4" stroke="none"/>
     </g></svg>
-    <img class="logo" src="wordmark-white.png" alt="TenantScout">
+    <img class="logo" src="https://cdn.jsdelivr.net/gh/legacyprolific/tenantscout-social-assets@9e4ee7699cad9c2f6e712426fe47569a73965401/meeting-kit/wordmark-white.png" alt="TenantScout">
     <div class="eyebrow">Strategic partnership</div>
     <h1>Bigger than software access.</h1>
   </div>
@@ -348,11 +348,11 @@ td.rank { font-family: "Montserrat"; font-weight: 800; font-size: 14pt; color: v
     <div class="cols">
       <div>
         <h2>How we'd work</h2>
-        <ul class="ticks"><li>Broker-first</li><li>Firm and client information protected</li><li>Proven on real listings before anything scales</li><li>Incentives aligned before scope grows</li></ul>
+        <ul class="ticks"><li><span class="b">● </span>Broker-first</li><li><span class="b">● </span>Firm and client information protected</li><li><span class="b">● </span>Proven on real listings before anything scales</li><li><span class="b">● </span>Incentives aligned before scope grows</li></ul>
       </div>
       <div>
         <h2>To talk through</h2>
-        <ul class="ticks"><li>Which listings or teams would show the engine best?</li><li>What would the firm need to see to go wider?</li><li>What would make this worth more than a vendor contract?</li></ul>
+        <ul class="ticks"><li><span class="b">● </span>Which listings or teams would show the engine best?</li><li><span class="b">● </span>What would the firm need to see to go wider?</li><li><span class="b">● </span>What would make this worth more than a vendor contract?</li></ul>
       </div>
     </div>
   </div>
@@ -362,13 +362,13 @@ td.rank { font-family: "Montserrat"; font-weight: 800; font-size: 14pt; color: v
 <!-- 7 · CONTACT CARDS (cut along dashed lines) -->
 <section class="page" data-document-role="page" data-label="Contact cards">
   <div class="cards">
-    <div class="mini f"><img class="wm" src="wordmark-white.png" alt="TenantScout"><div class="tag">Know what the building<br>should be. Know who to call.</div><div class="who">tenantscout.ai</div></div>
+    <div class="mini f"><img class="wm" src="https://cdn.jsdelivr.net/gh/legacyprolific/tenantscout-social-assets@9e4ee7699cad9c2f6e712426fe47569a73965401/meeting-kit/wordmark-white.png" alt="TenantScout"><div class="tag">Know what the building<br>should be. Know who to call.</div><div class="who">tenantscout.ai</div></div>
     <div class="mini"><div class="ask">Bring your next listing.</div><div class="who"><strong style="color:var(--forest);font-size:10pt">[Presenter name]</strong><br>[email]<br>[phone]<br>tenantscout.ai</div><div class="qr">QR</div></div>
-    <div class="mini f"><img class="wm" src="wordmark-white.png" alt="TenantScout"><div class="tag">Know what the building<br>should be. Know who to call.</div><div class="who">tenantscout.ai</div></div>
+    <div class="mini f"><img class="wm" src="https://cdn.jsdelivr.net/gh/legacyprolific/tenantscout-social-assets@9e4ee7699cad9c2f6e712426fe47569a73965401/meeting-kit/wordmark-white.png" alt="TenantScout"><div class="tag">Know what the building<br>should be. Know who to call.</div><div class="who">tenantscout.ai</div></div>
     <div class="mini"><div class="ask">Bring your next listing.</div><div class="who"><strong style="color:var(--forest);font-size:10pt">[Presenter name]</strong><br>[email]<br>[phone]<br>tenantscout.ai</div><div class="qr">QR</div></div>
-    <div class="mini f"><img class="wm" src="wordmark-white.png" alt="TenantScout"><div class="tag">Know what the building<br>should be. Know who to call.</div><div class="who">tenantscout.ai</div></div>
+    <div class="mini f"><img class="wm" src="https://cdn.jsdelivr.net/gh/legacyprolific/tenantscout-social-assets@9e4ee7699cad9c2f6e712426fe47569a73965401/meeting-kit/wordmark-white.png" alt="TenantScout"><div class="tag">Know what the building<br>should be. Know who to call.</div><div class="who">tenantscout.ai</div></div>
     <div class="mini"><div class="ask">Bring your next listing.</div><div class="who"><strong style="color:var(--forest);font-size:10pt">[Presenter name]</strong><br>[email]<br>[phone]<br>tenantscout.ai</div><div class="qr">QR</div></div>
-    <div class="mini f"><img class="wm" src="wordmark-white.png" alt="TenantScout"><div class="tag">Know what the building<br>should be. Know who to call.</div><div class="who">tenantscout.ai</div></div>
+    <div class="mini f"><img class="wm" src="https://cdn.jsdelivr.net/gh/legacyprolific/tenantscout-social-assets@9e4ee7699cad9c2f6e712426fe47569a73965401/meeting-kit/wordmark-white.png" alt="TenantScout"><div class="tag">Know what the building<br>should be. Know who to call.</div><div class="who">tenantscout.ai</div></div>
     <div class="mini"><div class="ask">Bring your next listing.</div><div class="who"><strong style="color:var(--forest);font-size:10pt">[Presenter name]</strong><br>[email]<br>[phone]<br>tenantscout.ai</div><div class="qr">QR</div></div>
   </div>
   <div class="foot"><span class="domain">tenantscout.ai</span><span>Contact cards · front (forest) and back (white) · cut on the dashed lines</span></div>

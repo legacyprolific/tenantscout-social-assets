@@ -27,10 +27,8 @@ p, li { font-size: 32px; line-height: 1.4; }
 .f .lead { color: #DCEAE3; }
 .logo { height: 58px; margin-bottom: auto; align-self: flex-start; }
 ul.t { list-style: none; display: grid; gap: 22px; }
-ul.t li { padding-left: 52px; position: relative; }
-ul.t li::before { content: ""; position: absolute; left: 0; top: 12px; width: 22px; height: 22px; border-radius: 50%; border: 5px solid var(--moss); }
-.f ul.t li::before { border-color: var(--sage); }
-.grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
+ul.t li { padding-left: 0; }
+.f .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
 .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
 .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
 .box { border: 2px solid var(--rule); border-top: 10px solid var(--forest); border-radius: 10px; padding: 32px 30px; }
@@ -50,13 +48,16 @@ td.r { font-family: "Montserrat"; font-weight: 800; font-size: 44px; color: var(
 .f .foot { color: var(--sage); }
 .num { position: absolute; right: 140px; bottom: 50px; font-family: "Montserrat"; font-weight: 700; font-size: 20px; letter-spacing: .18em; color: var(--muted); }
 .f .num { color: var(--sage); }
+.b { color: #1F6F54; font-size: .8em; } .f .b, .card.forest .b { color: #9FC9B4; }
+.sn { font-family: "Montserrat"; font-weight: 800; font-size: 8pt; letter-spacing: .18em; color: #1F6F54; margin-bottom: 4pt; }
+.conv { font-weight: 650; font-size: 9pt; color: #1F6F54; text-transform: uppercase; letter-spacing: .06em; }
 </style>
 </head>
 <body>
 
 <section class="slide f" data-document-role="page" data-label="Title" data-speaker-notes="Open with the question before anything about the product: when you sign a new listing, how long until you're confident what the building should be, and you're talking to a tenant who could actually take it? Let them answer. Don't pitch over it.">
   <svg class="scope" viewBox="0 0 200 200"><g fill="none" stroke="#FFFFFF" stroke-width="2"><circle cx="100" cy="100" r="96"/><circle cx="100" cy="100" r="70"/><circle cx="100" cy="100" r="44"/><circle cx="100" cy="100" r="18"/><line x1="100" y1="0" x2="100" y2="22"/><line x1="100" y1="178" x2="100" y2="200"/><line x1="0" y1="100" x2="22" y2="100"/><line x1="178" y1="100" x2="200" y2="100"/><circle cx="132" cy="70" r="5" fill="#9FC9B4" stroke="none"/></g></svg>
-  <img class="logo" src="wordmark-white.png" alt="TenantScout">
+  <img class="logo" src="https://cdn.jsdelivr.net/gh/legacyprolific/tenantscout-social-assets@9e4ee7699cad9c2f6e712426fe47569a73965401/meeting-kit/wordmark-white.png" alt="TenantScout">
   <div class="eyebrow">The HBU engine for commercial listings</div>
   <h1>Know what the building should be.<br>Know who to call.</h1>
   <p class="lead" style="margin-top:40px">Broker + Executive Briefing · [Presenter name]</p>
@@ -87,10 +88,10 @@ td.r { font-family: "Montserrat"; font-weight: 800; font-size: 44px; color: var(
   <div class="eyebrow">Your judgment drives it</div>
   <h2>The engine does the screening. You make the call.</h2>
   <ul class="t">
-    <li>Read the reasoning behind every ranked use</li>
-    <li>Disagree? Override it, and the list rebuilds around your call</li>
-    <li>Investment listing? It branches to buyer matching instead</li>
-    <li>A prohibited use never reaches the list, so it never reaches a phone call</li>
+    <li><span class="b">● </span>Read the reasoning behind every ranked use</li>
+    <li><span class="b">● </span>Disagree? Override it, and the list rebuilds around your call</li>
+    <li><span class="b">● </span>Investment listing? It branches to buyer matching instead</li>
+    <li><span class="b">● </span>A prohibited use never reaches the list, so it never reaches a phone call</li>
   </ul>
   <div class="foot">tenantscout.ai</div><div class="num">04</div>
 </section>
@@ -100,14 +101,14 @@ td.r { font-family: "Montserrat"; font-weight: 800; font-size: 44px; color: var(
   <h2>For each use, the businesses that fit it.</h2>
   <div class="grid2">
     <ul class="t">
-      <li>Phone, address, website where the record has them</li>
-      <li>Distance from the property</li>
-      <li>Talking points written for that business</li>
+      <li><span class="b">● </span>Phone, address, website where the record has them</li>
+      <li><span class="b">● </span>Distance from the property</li>
+      <li><span class="b">● </span>Talking points written for that business</li>
     </ul>
     <ul class="t">
-      <li>Do-not-call scrub</li>
-      <li>Excel export, or work it in the app</li>
-      <li>Leads seed the CRM; follow-ups come from call outcomes</li>
+      <li><span class="b">● </span>Do-not-call scrub</li>
+      <li><span class="b">● </span>Excel export, or work it in the app</li>
+      <li><span class="b">● </span>Leads seed the CRM; follow-ups come from call outcomes</li>
     </ul>
   </div>
   <div class="bar">Live demo: a real OM, start to finish.</div>
@@ -142,10 +143,10 @@ td.r { font-family: "Montserrat"; font-weight: 800; font-size: 44px; color: var(
   <div class="eyebrow">What you take into the owner meeting</div>
   <h2>Walk in with the answer.</h2>
   <ul class="t">
-    <li>The ranked uses and the reasoning behind each</li>
-    <li>The businesses you'll call first, by use</li>
-    <li>A plan the owner can see you working, week by week</li>
-    <li>Follow-ups that come from call outcomes, not memory</li>
+    <li><span class="b">● </span>The ranked uses and the reasoning behind each</li>
+    <li><span class="b">● </span>The businesses you'll call first, by use</li>
+    <li><span class="b">● </span>A plan the owner can see you working, week by week</li>
+    <li><span class="b">● </span>Follow-ups that come from call outcomes, not memory</li>
   </ul>
   <div class="foot">tenantscout.ai</div><div class="num">08</div>
 </section>
@@ -168,8 +169,8 @@ td.r { font-family: "Montserrat"; font-weight: 800; font-size: 44px; color: var(
   <div class="eyebrow">A practical firm pilot</div>
   <h2>Prove it on real listings.</h2>
   <div class="grid2">
-    <div><h3>The shape</h3><ul class="t"><li>A focused group of leasing brokers</li><li>Real listings, current and newly signed</li><li>Onboarding and a direct line to the founder</li></ul></div>
-    <div><h3>What we review together</h3><ul class="t"><li>Did the rankings hold up?</li><li>Did it change the pitch?</li><li>How fast did conversations start?</li></ul></div>
+    <div><h3>The shape</h3><ul class="t"><li><span class="b">● </span>A focused group of leasing brokers</li><li><span class="b">● </span>Real listings, current and newly signed</li><li><span class="b">● </span>Onboarding and a direct line to the founder</li></ul></div>
+    <div><h3>What we review together</h3><ul class="t"><li><span class="b">● </span>Did the rankings hold up?</li><li><span class="b">● </span>Did it change the pitch?</li><li><span class="b">● </span>How fast did conversations start?</li></ul></div>
   </div>
   <div class="foot">tenantscout.ai</div><div class="num">10</div>
 </section>
@@ -178,18 +179,18 @@ td.r { font-family: "Montserrat"; font-weight: 800; font-size: 44px; color: var(
   <div class="eyebrow">More than a vendor conversation</div>
   <h2>Where's the strongest fit?</h2>
   <ul class="t">
-    <li><strong>Firm-wide adoption</strong> across an agreed group or business line</li>
-    <li><strong>Design partner</strong>: your brokers help shape the engine</li>
-    <li><strong>Market-intelligence collaboration</strong></li>
-    <li><strong>Preferred platform relationship</strong></li>
-    <li><strong>Strategic partnership or investment</strong>, where it's aligned for both sides</li>
+    <li><span class="b">● </span><strong>Firm-wide adoption</strong> across an agreed group or business line</li>
+    <li><span class="b">● </span><strong>Design partner</strong>: your brokers help shape the engine</li>
+    <li><span class="b">● </span><strong>Market-intelligence collaboration</strong></li>
+    <li><span class="b">● </span><strong>Preferred platform relationship</strong></li>
+    <li><span class="b">● </span><strong>Strategic partnership or investment</strong>, where it's aligned for both sides</li>
   </ul>
   <div class="foot">tenantscout.ai</div><div class="num">11</div>
 </section>
 
 <section class="slide f" data-document-role="page" data-label="Close" data-speaker-notes="Close: I'm not asking you to make a platform decision from a deck. Give me a few of your listings, let your brokers pressure-test the rankings, and we'll decide together whether it's worth scaling.">
   <svg class="scope" viewBox="0 0 200 200"><g fill="none" stroke="#FFFFFF" stroke-width="2"><circle cx="100" cy="100" r="96"/><circle cx="100" cy="100" r="70"/><circle cx="100" cy="100" r="44"/><circle cx="100" cy="100" r="18"/><line x1="100" y1="0" x2="100" y2="22"/><line x1="100" y1="178" x2="100" y2="200"/><line x1="0" y1="100" x2="22" y2="100"/><line x1="178" y1="100" x2="200" y2="100"/><circle cx="132" cy="70" r="5" fill="#9FC9B4" stroke="none"/></g></svg>
-  <img class="logo" src="wordmark-white.png" alt="TenantScout">
+  <img class="logo" src="https://cdn.jsdelivr.net/gh/legacyprolific/tenantscout-social-assets@9e4ee7699cad9c2f6e712426fe47569a73965401/meeting-kit/wordmark-white.png" alt="TenantScout">
   <div class="eyebrow">Bring us your next listing</div>
   <h1>Pilot it on real listings.<br>Talk partnership.</h1>
   <p class="lead" style="margin-top:40px">[Presenter name] · [email] · [phone]</p>
