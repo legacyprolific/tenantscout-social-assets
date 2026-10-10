@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TenantScout Meeting Packet</title>
+<style>
+@font-face { font-family: "Montserrat"; src: url("fonts/Montserrat.ttf") format("truetype"); font-weight: 100 900; }
+@font-face { font-family: "Inter"; src: url("fonts/Inter.ttf") format("truetype"); font-weight: 100 900; }
+
+:root {
+  --forest: #123D32;
+  --white: #FFFFFF;
+  --moss: #1F6F54;
+  --sage: #9FC9B4;
+  --muted: #6E8B7E;
+  --ink: #0E2A23;
+  --rule: #D5E3DC;
+  --tint: #EEF5F1;
+}
+
+@page { size: Letter; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #E6ECE9; }
+body { font-family: "Inter", system-ui, sans-serif; color: var(--ink); font-size: 10.5pt; line-height: 1.45;
+  -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+.page { width: 8.5in; height: 11in; margin: 0.3in auto; background: var(--white); position: relative;
+  overflow: hidden; display: flex; flex-direction: column; break-after: page; page-break-after: always; }
+@media print { html, body { background: var(--white); } .page { margin: 0; box-shadow: none; } }
+@media screen { .page { box-shadow: 0 2px 18px rgba(14,42,35,.14); } }
+@media screen and (max-width: 860px) { .page { transform: scale(.42); transform-origin: top left; margin: 0 0 -6.3in 16px; } }
+
+/* forest header band */
+.band { flex-shrink: 0; background: var(--forest); color: var(--white); padding: 0.5in 0.7in 0.42in; position: relative; overflow: hidden; }
+.band .logo { height: 0.3in; display: block; margin-bottom: 0.38in; }
+.band .eyebrow { color: var(--sage); }
+.band h1 { color: var(--white); }
+.band .lede { color: #DCEAE3; max-width: 6in; }
+.scope { position: absolute; right: -1.1in; top: -1.1in; width: 3.6in; height: 3.6in; opacity: .16; }
+
+.eyebrow { font-family: "Montserrat"; font-weight: 700; font-size: 8pt; letter-spacing: .22em; text-transform: uppercase; color: var(--moss); margin-bottom: 8pt; }
+h1 { font-family: "Montserrat"; font-weight: 800; text-transform: uppercase; font-size: 27pt; line-height: 1.02; letter-spacing: -.01em; margin-bottom: 12pt; }
+h2 { font-family: "Montserrat"; font-weight: 800; text-transform: uppercase; font-size: 12pt; letter-spacing: .02em; color: var(--forest); margin-bottom: 7pt; }
+h3 { font-family: "Montserrat"; font-weight: 700; font-size: 10.5pt; color: var(--forest); margin-bottom: 3pt; }
+.lede { font-size: 12pt; line-height: 1.45; }
+p + p { margin-top: 6pt; }
+strong { font-weight: 650; }
+
+.body { padding: 0.32in 0.7in 0.85in; flex: 1; display: flex; flex-direction: column; gap: 0.18in; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0.3in; }
+.cols3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.2in; }
+
+ul.ticks { list-style: none; }
+ul.ticks li { padding-left: 16pt; position: relative; margin-bottom: 5pt; }
+ul.ticks li::before { content: ""; position: absolute; left: 0; top: 5pt; width: 8pt; height: 8pt; border-radius: 50%;
+  border: 2pt solid var(--moss); }
+
+.screens { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.14in; }
+.screen { border: 1px solid var(--rule); border-top: 4pt solid var(--forest); border-radius: 4pt; padding: 8pt 9pt 9pt; }
+.screen .n { font-family: "Montserrat"; font-weight: 800; font-size: 18pt; color: var(--moss); line-height: 1; margin-bottom: 5pt; }
+.screen h3 { font-size: 10pt; }
+.screen p { font-size: 9pt; color: #33493F; }
+
+.card { border: 1px solid var(--rule); border-radius: 5pt; padding: 13pt 14pt; }
+.card.forest { background: var(--forest); color: #E3EEE8; border: 0; }
+.card.forest h2, .card.forest h3 { color: var(--white); }
+.card.tint { background: var(--tint); border: 0; }
+
+.cta { background: var(--forest); color: var(--white); font-family: "Montserrat"; font-weight: 800; text-transform: uppercase;
+  font-size: 12pt; letter-spacing: .03em; padding: 14pt 18pt; border-radius: 5pt; display: flex; justify-content: space-between; align-items: center; }
+.cta span { color: var(--sage); font-size: 9pt; letter-spacing: .14em; }
+
+.flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; }
+.step { padding: 12pt 10pt; border-left: 1px solid var(--rule); }
+.step:first-child { border-left: 0; padding-left: 0; }
+.step .k { font-family: "Montserrat"; font-weight: 800; text-transform: uppercase; font-size: 11pt; color: var(--forest); margin-bottom: 5pt; }
+.step .k::before { content: attr(data-n); display: block; font-size: 8pt; color: var(--moss); letter-spacing: .18em; margin-bottom: 4pt; }
+.step p { font-size: 9.2pt; }
+
+table { width: 100%; border-collapse: collapse; font-size: 9.6pt; }
+th { text-align: left; font-family: "Montserrat"; font-weight: 700; font-size: 7.5pt; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--white); background: var(--forest); padding: 7pt 9pt; }
+td { padding: 8pt 9pt; border-bottom: 1px solid var(--rule); vertical-align: top; }
+td.rank { font-family: "Montserrat"; font-weight: 800; font-size: 14pt; color: var(--moss); width: 0.45in; }
+.pill { display: inline-block; font-size: 7.5pt; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; padding: 2pt 7pt; border-radius: 99pt; }
+.pill.go { background: var(--forest); color: var(--white); }
+.pill.va { background: var(--tint); color: var(--forest); border: 1px solid var(--sage); }
+
+.flag { border: 1.5pt dashed var(--moss); color: var(--moss); font-family: "Montserrat"; font-weight: 700; font-size: 8pt;
+  letter-spacing: .16em; text-transform: uppercase; padding: 7pt 10pt; border-radius: 4pt; text-align: center; }
+
+.wins h3 { font-family: "Montserrat"; font-weight: 800; text-transform: uppercase; font-size: 10pt; letter-spacing: .1em; color: var(--sage); margin-bottom: 5pt; }
+
+.foot { position: absolute; left: 0.7in; right: 0.7in; bottom: 0.32in; display: flex; justify-content: space-between; align-items: center;
+  font-size: 8pt; color: var(--muted); }
+.foot .domain { font-weight: 600; color: var(--moss); letter-spacing: .02em; }
+.foot img { height: 0.15in; }
+
+/* contact cards */
+.cards { padding: 0.75in 0.75in; display: grid; grid-template-columns: 3.5in 3.5in; grid-auto-rows: 2in; gap: 0.25in 0.5in; }
+.mini { border: 1px dashed #B9CCC3; border-radius: 4pt; padding: 0.2in 0.22in; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+.mini.f { background: var(--forest); border: 0; color: var(--white); }
+.mini img.wm { height: 0.2in; align-self: flex-start; }
+.mini .tag { font-family: "Montserrat"; font-weight: 800; text-transform: uppercase; font-size: 10pt; line-height: 1.15; }
+.mini.f .tag { color: var(--white); }
+.mini .who { font-size: 8pt; color: #33493F; }
+.mini.f .who { color: var(--sage); }
+.mini .qr { position: absolute; right: 0.2in; bottom: 0.2in; width: 0.8in; height: 0.8in; border: 1.5pt dashed var(--moss); border-radius: 4pt;
+  font-size: 6.5pt; letter-spacing: .14em; color: var(--moss); display: grid; place-items: center; font-weight: 700; }
+.mini.f .qr { border-color: var(--sage); color: var(--sage); }
+.mini .ask { font-size: 8.5pt; font-weight: 650; color: var(--moss); }
+.mini.f .ask { color: var(--sage); }
+</style>
+</head>
+<body>
+
+
+<!-- 1 · BROKER ONE-PAGER -->
+<section class="page" data-document-role="page" data-label="Broker one-pager">
+  <div class="band">
+    <svg class="scope" viewBox="0 0 200 200"><g fill="none" stroke="#FFFFFF" stroke-width="2">
+      <circle cx="100" cy="100" r="96"/><circle cx="100" cy="100" r="70"/><circle cx="100" cy="100" r="44"/><circle cx="100" cy="100" r="18"/>
+      <line x1="100" y1="0" x2="100" y2="22"/><line x1="100" y1="178" x2="100" y2="200"/>
+      <line x1="0" y1="100" x2="22" y2="100"/><line x1="178" y1="100" x2="200" y2="100"/>
+      <circle cx="132" cy="70" r="5" fill="#9FC9B4" stroke="none"/>
+    </g></svg>
+    <img class="logo" src="wordmark-white.png" alt="TenantScout">
+    <div class="eyebrow">The HBU engine for commercial listings</div>
+    <h1>Know what the building should be.<br>Know who to call.</h1>
+    <p class="lede">Upload the OM. TenantScout reads the text and the photos, works out the highest and best use, and hands you the businesses that fit it, the day you sign.</p>
+  </div>
+  <div class="body">
+    <div>
+      <h2>How the engine screens every use</h2>
+      <div class="screens">
+        <div class="screen"><div class="n">1</div><h3>Allowed here?</h3><p>Zoning district checked against the jurisdiction's permitted-use code.</p></div>
+        <div class="screen"><div class="n">2</div><h3>Physically possible?</h3><p>Clear height, doors, power, yard, office ratio, parking, frontage.</p></div>
+        <div class="screen"><div class="n">3</div><h3>What would it take?</h3><p>Plug-and-play ranks ahead of a heavy build-out.</p></div>
+        <div class="screen"><div class="n">4</div><h3>Who wants it?</h3><p>Size fit and submarket demand.</p></div>
+      </div>
+    </div>
+    <div class="cols">
+      <div>
+        <h2>What you walk away with</h2>
+        <ul class="ticks">
+          <li><strong>The top three uses</strong>, each with a fit score, conviction and the reasoning</li>
+          <li><strong>A call sheet per use</strong>: phone, address, website where listed, distance, talking points, DNC scrub</li>
+          <li><strong>An override</strong> when you know better, and the list rebuilds around your call</li>
+          <li><strong>Leads in the CRM</strong> and follow-ups from every call outcome</li>
+        </ul>
+      </div>
+      <div class="card forest wins">
+        <h3>The tenant</h3><p>A space that fits their business, legally and physically, and a call that's about them.</p>
+        <h3 style="margin-top:9pt">You</h3><p>First conversations the day you sign, and a real shot at your own tenant on your own listing.</p>
+        <h3 style="margin-top:9pt">The owner</h3><p>A clear answer to "what should this be?" with names attached, before the sign goes up.</p>
+      </div>
+    </div>
+    <div class="cta">Bring your next listing. We'll run it with you. <span>tenantscout.ai</span></div>
+  </div>
+  <div class="foot"><span class="domain">tenantscout.ai</span><span>Broker one-pager</span></div>
+</section>
+
+<!-- 2 · EXECUTIVE BRIEF -->
+<section class="page" data-document-role="page" data-label="Executive brief">
+  <div class="band">
+    <svg class="scope" viewBox="0 0 200 200"><g fill="none" stroke="#FFFFFF" stroke-width="2">
+      <circle cx="100" cy="100" r="96"/><circle cx="100" cy="100" r="70"/><circle cx="100" cy="100" r="44"/><circle cx="100" cy="100" r="18"/>
+      <line x1="100" y1="0" x2="100" y2="22"/><line x1="100" y1="178" x2="100" y2="200"/>
+      <line x1="0" y1="100" x2="22" y2="100"/><line x1="178" y1="100" x2="200" y2="100"/>
+      <circle cx="132" cy="70" r="5" fill="#9FC9B4" stroke="none"/>
+    </g></svg>
+    <img class="logo" src="wordmark-white.png" alt="TenantScout">
+    <div class="eyebrow">Executive brief</div>
+    <h1>The same HBU discipline on every listing the firm signs.</h1>
+  </div>
+  <div class="body">
+    <div>
+      <h2>What it is</h2>
+      <p>TenantScout is an HBU engine for commercial listings. From an offering memorandum it ranks the highest and best uses of the building (legal, physical, conversion cost and demand), explains the reasoning, and builds a call list of the businesses that fit each use.</p>
+    </div>
+    <div>
+      <h2>What it changes for the firm</h2>
+      <div class="cols3">
+        <div class="card"><h3>Consistent analysis</h3><p>Every broker, every office, the same screening on day one.</p></div>
+        <div class="card"><h3>Stronger pitches</h3><p>Brokers walk into the listing presentation with the answer and the names behind it.</p></div>
+        <div class="card"><h3>Faster leasing</h3><p>Conversations start the day the listing signs.</p></div>
+        <div class="card"><h3>More double-ends</h3><p>The firm's broker finds the tenant for the firm's listing.</p></div>
+        <div class="card"><h3>Value owners see</h3><p>A plan with names attached, and work the owner can watch happen.</p></div>
+        <div class="card"><h3>A record you keep</h3><p>Leads, call outcomes and follow-ups live in a shared CRM.</p></div>
+      </div>
+    </div>
+    <div class="cols">
+      <div class="card tint"><h3>What it doesn't do</h3><p>It doesn't replace the broker's judgment. Every ranking comes with its reasoning, and any broker can override it.</p></div>
+      <div class="card tint"><h3>On your data</h3><p>Uploaded OMs are used to produce your outputs, processed by named service providers under contract. We do not sell personal information.</p></div>
+    </div>
+    <div class="cta">What happens when every listing starts with a ranked answer and a call sheet?</div>
+  </div>
+  <div class="foot"><span class="domain">tenantscout.ai</span><span>Executive brief</span></div>
+</section>
+
+<!-- 3 · HOW IT WORKS -->
+<section class="page" data-document-role="page" data-label="How it works">
+  <div class="band">
+    <svg class="scope" viewBox="0 0 200 200"><g fill="none" stroke="#FFFFFF" stroke-width="2">
+      <circle cx="100" cy="100" r="96"/><circle cx="100" cy="100" r="70"/><circle cx="100" cy="100" r="44"/><circle cx="100" cy="100" r="18"/>
+      <line x1="100" y1="0" x2="100" y2="22"/><line x1="100" y1="178" x2="100" y2="200"/>
+      <line x1="0" y1="100" x2="22" y2="100"/><line x1="178" y1="100" x2="200" y2="100"/>
+      <circle cx="132" cy="70" r="5" fill="#9FC9B4" stroke="none"/>
+    </g></svg>
+    <img class="logo" src="wordmark-white.png" alt="TenantScout">
+    <div class="eyebrow">How it works</div>
+    <h1>From the OM to the first call.</h1>
+  </div>
+  <div class="body">
+    <div class="flow">
+      <div class="step"><div class="k" data-n="01">Upload</div><p>The OM or flyer. Text, photos, floor and site plans are all read.</p></div>
+      <div class="step"><div class="k" data-n="02">Screen</div><p>Every use tested for zoning, physical fit, conversion cost and demand.</p></div>
+      <div class="step"><div class="k" data-n="03">Rank</div><p>Top three uses with fit score, conviction and reasoning. Override any of them.</p></div>
+      <div class="step"><div class="k" data-n="04">Call</div><p>The businesses that fit each use, with a reason to call each one.</p></div>
+      <div class="step"><div class="k" data-n="05">Follow up</div><p>Leads seed the CRM, tasks come from call outcomes, renewal radar watches the tenants you place.</p></div>
+    </div>
+    <div class="cols">
+      <div class="card">
+        <h2>The engine, in plain words</h2>
+        <ul class="ticks">
+          <li>A use the zoning prohibits never makes the list, so it never reaches a phone call.</li>
+          <li>Hard physical requirements knock a use out before it's scored.</li>
+          <li>Ready-to-occupy uses rank ahead of ones that need a big build-out.</li>
+          <li>Size fit and submarket demand decide the order.</li>
+          <li>Investment listings branch to buyer matching instead.</li>
+        </ul>
+      </div>
+      <div class="card forest">
+        <h2>Your judgment drives it</h2>
+        <p>Read the reasoning behind every ranked use. When you know the building better, override it, and the call list rebuilds around your call.</p>
+        <p style="margin-top:10pt;color:var(--sage);font-family:Montserrat;font-weight:800;text-transform:uppercase;font-size:10pt;letter-spacing:.04em">The engine does the screening. You make the call.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="domain">tenantscout.ai</span><span>How it works</span></div>
+</section>
+
+<!-- 4 · ILLUSTRATIVE RUN -->
+<section class="page" data-document-role="page" data-label="Illustrative run">
+  <div class="band">
+    <svg class="scope" viewBox="0 0 200 200"><g fill="none" stroke="#FFFFFF" stroke-width="2">
+      <circle cx="100" cy="100" r="96"/><circle cx="100" cy="100" r="70"/><circle cx="100" cy="100" r="44"/><circle cx="100" cy="100" r="18"/>
+      <line x1="100" y1="0" x2="100" y2="22"/><line x1="100" y1="178" x2="100" y2="200"/>
+      <line x1="0" y1="100" x2="22" y2="100"/><line x1="178" y1="100" x2="200" y2="100"/>
+      <circle cx="132" cy="70" r="5" fill="#9FC9B4" stroke="none"/>
+    </g></svg>
+    <img class="logo" src="wordmark-white.png" alt="TenantScout">
+    <div class="eyebrow">Illustrative run</div>
+    <h1>One listing, start to finish.</h1>
+  </div>
+  <div class="body">
+    <div class="flag">Illustrative example · not live market data · business types are descriptions, not real companies</div>
+    <div class="card tint"><h3>The listing</h3><p>Single-tenant industrial building on a light-industrial parcel. Secured paved yard, grade-level doors, modest office.</p></div>
+    <div>
+      <h2>Ranked uses</h2>
+      <table>
+        <tr><th>#</th><th>Use</th><th>Why it ranks</th><th>Conversion</th></tr>
+        <tr><td class="rank">1</td><td><strong>Contractor / equipment yard</strong></td><td>Secured yard, industrial zoning</td><td><span class="pill go">Plug-and-play</span></td></tr>
+        <tr><td class="rank">2</td><td><strong>Auto / fleet repair &amp; service</strong></td><td>Grade doors; permitted in the district</td><td><span class="pill go">Plug-and-play</span></td></tr>
+        <tr><td class="rank">3</td><td><strong>Light manufacturing</strong></td><td>Zoning and power support it</td><td><span class="pill va">Value-add</span></td></tr>
+      </table>
+    </div>
+    <div>
+      <h2>Call sheet · use 1 (excerpt)</h2>
+      <table>
+        <tr><th>Business type</th><th>Distance</th><th>Talking point</th></tr>
+        <tr><td><strong>Regional HVAC contractor</strong></td><td>Under a mile</td><td>Secured yard for vehicles and equipment, close to their service area</td></tr>
+        <tr><td><strong>Equipment rental branch</strong></td><td>A few miles</td><td>Grade doors and a paved yard suit a rental counter and storage</td></tr>
+        <tr><td><strong>Landscape contractor</strong></td><td>A few miles</td><td>Room for trucks and materials without leaving the area</td></tr>
+      </table>
+    </div>
+    <div class="cta">Call, log the outcome, and the follow-up schedules itself.</div>
+  </div>
+  <div class="foot"><span class="domain">tenantscout.ai</span><span>Illustrative run</span></div>
+</section>
+
+<!-- 5 · FIRM PILOT -->
+<section class="page" data-document-role="page" data-label="Firm pilot">
+  <div class="band">
+    <svg class="scope" viewBox="0 0 200 200"><g fill="none" stroke="#FFFFFF" stroke-width="2">
+      <circle cx="100" cy="100" r="96"/><circle cx="100" cy="100" r="70"/><circle cx="100" cy="100" r="44"/><circle cx="100" cy="100" r="18"/>
+      <line x1="100" y1="0" x2="100" y2="22"/><line x1="100" y1="178" x2="100" y2="200"/>
+      <line x1="0" y1="100" x2="22" y2="100"/><line x1="178" y1="100" x2="200" y2="100"/>
+      <circle cx="132" cy="70" r="5" fill="#9FC9B4" stroke="none"/>
+    </g></svg>
+    <img class="logo" src="wordmark-white.png" alt="TenantScout">
+    <div class="eyebrow">Firm pilot</div>
+    <h1>Prove it on real listings.</h1>
+    <p class="lede">No platform decision from a deck. A few brokers, a few listings, and a review together.</p>
+  </div>
+  <div class="body">
+    <div class="cols">
+      <div class="card">
+        <h2>The shape</h2>
+        <ul class="ticks">
+          <li>A focused group of leasing brokers</li>
+          <li>Real listings, current and newly signed</li>
+          <li>Onboarding and a direct line to the founder</li>
+          <li>A set review date</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>What we look at together</h2>
+        <ul class="ticks">
+          <li>Did the ranked uses hold up against the brokers' own read?</li>
+          <li>Did it change the listing pitch?</li>
+          <li>How fast did the first real conversations start?</li>
+          <li>Did brokers keep using it without being asked?</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card tint"><h3>Commercial terms</h3><p>Set together once the scope is agreed.</p></div>
+    <div class="cta">Pick the brokers. Pick the listings. Run it. <span>tenantscout.ai</span></div>
+  </div>
+  <div class="foot"><span class="domain">tenantscout.ai</span><span>Firm pilot</span></div>
+</section>
+
+<!-- 6 · PARTNERSHIP -->
+<section class="page" data-document-role="page" data-label="Strategic partnership">
+  <div class="band">
+    <svg class="scope" viewBox="0 0 200 200"><g fill="none" stroke="#FFFFFF" stroke-width="2">
+      <circle cx="100" cy="100" r="96"/><circle cx="100" cy="100" r="70"/><circle cx="100" cy="100" r="44"/><circle cx="100" cy="100" r="18"/>
+      <line x1="100" y1="0" x2="100" y2="22"/><line x1="100" y1="178" x2="100" y2="200"/>
+      <line x1="0" y1="100" x2="22" y2="100"/><line x1="178" y1="100" x2="200" y2="100"/>
+      <circle cx="132" cy="70" r="5" fill="#9FC9B4" stroke="none"/>
+    </g></svg>
+    <img class="logo" src="wordmark-white.png" alt="TenantScout">
+    <div class="eyebrow">Strategic partnership</div>
+    <h1>Bigger than software access.</h1>
+  </div>
+  <div class="body">
+    <div>
+      <h2>Possible paths</h2>
+      <div class="cols">
+        <div class="card"><h3>Firm-wide adoption</h3><p>TenantScout across an agreed group or business line.</p></div>
+        <div class="card"><h3>Design partner</h3><p>Your brokers help shape the engine: the uses it knows, the submarkets it understands.</p></div>
+        <div class="card"><h3>Market intelligence</h3><p>Your market knowledge plus the engine's screening.</p></div>
+        <div class="card"><h3>Preferred platform</h3><p>A deeper technology relationship where the fit is real.</p></div>
+      </div>
+      <div class="card forest" style="margin-top:0.2in"><h3>Strategic partnership or investment</h3><p>Only where incentives and vision line up for both sides.</p></div>
+    </div>
+    <div class="cols">
+      <div>
+        <h2>How we'd work</h2>
+        <ul class="ticks"><li>Broker-first</li><li>Firm and client information protected</li><li>Proven on real listings before anything scales</li><li>Incentives aligned before scope grows</li></ul>
+      </div>
+      <div>
+        <h2>To talk through</h2>
+        <ul class="ticks"><li>Which listings or teams would show the engine best?</li><li>What would the firm need to see to go wider?</li><li>What would make this worth more than a vendor contract?</li></ul>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span class="domain">tenantscout.ai</span><span>Strategic partnership</span></div>
+</section>
+
+<!-- 7 · CONTACT CARDS (cut along dashed lines) -->
+<section class="page" data-document-role="page" data-label="Contact cards">
+  <div class="cards">
+    <div class="mini f"><img class="wm" src="wordmark-white.png" alt="TenantScout"><div class="tag">Know what the building<br>should be. Know who to call.</div><div class="who">tenantscout.ai</div></div>
+    <div class="mini"><div class="ask">Bring your next listing.</div><div class="who"><strong style="color:var(--forest);font-size:10pt">[Presenter name]</strong><br>[email]<br>[phone]<br>tenantscout.ai</div><div class="qr">QR</div></div>
+    <div class="mini f"><img class="wm" src="wordmark-white.png" alt="TenantScout"><div class="tag">Know what the building<br>should be. Know who to call.</div><div class="who">tenantscout.ai</div></div>
+    <div class="mini"><div class="ask">Bring your next listing.</div><div class="who"><strong style="color:var(--forest);font-size:10pt">[Presenter name]</strong><br>[email]<br>[phone]<br>tenantscout.ai</div><div class="qr">QR</div></div>
+    <div class="mini f"><img class="wm" src="wordmark-white.png" alt="TenantScout"><div class="tag">Know what the building<br>should be. Know who to call.</div><div class="who">tenantscout.ai</div></div>
+    <div class="mini"><div class="ask">Bring your next listing.</div><div class="who"><strong style="color:var(--forest);font-size:10pt">[Presenter name]</strong><br>[email]<br>[phone]<br>tenantscout.ai</div><div class="qr">QR</div></div>
+    <div class="mini f"><img class="wm" src="wordmark-white.png" alt="TenantScout"><div class="tag">Know what the building<br>should be. Know who to call.</div><div class="who">tenantscout.ai</div></div>
+    <div class="mini"><div class="ask">Bring your next listing.</div><div class="who"><strong style="color:var(--forest);font-size:10pt">[Presenter name]</strong><br>[email]<br>[phone]<br>tenantscout.ai</div><div class="qr">QR</div></div>
+  </div>
+  <div class="foot"><span class="domain">tenantscout.ai</span><span>Contact cards · front (forest) and back (white) · cut on the dashed lines</span></div>
+</section>
+
+</body>
+</html>
